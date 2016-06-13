@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="SF crime project">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>SF Crime Patterns - 2014</title>
+  </head>
+
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nukeynick/crime">View on GitHub</a> 
+          
+          <h1 id="project_title">Nicholas Ule</h1>
+          <h2 id="project_tagline">High Crime Rates in the Downtown San Francisco Police Districts</h2>
+
+        </header>
+</div>
+
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a id="intro" class="anchor" href="#intro" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem Setup</h3>
+
+Using data taken over the Summer of 2014 for San Francisco's crime rates it is clear that the downtown police districts account for a far greater portion of the city's crime than the other zones.
+This is true for all types of crime despite the fact that the downtown area is not very large and has two full police districts dedicated to its service.
+I will briefly demonstrate this claim and discuss the implications and future plans for San Francisco's police department.
+</p>
+
+<h4><a id="rate" class="anchor" href="#rate" aria-hidden="true"><span class="octicon octicon-link"></span></a>San Francisco Crime Rate</h4>
+
+<p>
+The criminal incident data covers the Summer of 2014, from June 1st to August 31st, a span of 92 days.
+I was initially curious to see if there was any significant change to the amount of crime as the Summer went on.
+I broke the data into 13 weeks, although this leaves one extra day at the end, and examined the total number of reported crimes per week.
+</p>
+
+<img src="/data/SF_CrimeRate.png" alt="SF Crime" class="inline"/>
+
+<p>
+Outside of weeks 2 and 13 the crime rate did not fluctuate significantly, over the whole Summer there was roughly 2030 crimes per week in the city.
+It seems likely that crime rates do not change significantly over a single season.
+Comparing the differences in crime rates between Summer and Winter would be a better comparison than what this data provides for.
+Since examining the temporal nature of crime is not possible with this data set I turned to exmining the differences in geography.
+</p>
+
+<h5><a id="PdDistricts" class="anchor" href="#locs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Police District Crime Rates/h5>
+
+<p>
+The city of San Francisco is a diverse place, both ethnically and economically.
+Certain parts of the city have higher mean incomes or higher rates of homelessness.
+These are the types of variables that can be used to predict crimes, although they are not readily available for this study.
+The data provide several ways of determining geography including basic x and y coordinates (latitude and longitude), street intersections, and Police District.
+I chose to use Police Districts since I assumed they were already drawn to map out specific neighborhoods within the city.
+The city has <a href="https://hoodwork-production.s3.amazonaws.com/uploads/story/image/10247/sfpdfinal.png">10 districts</a> and their borders tend to agree with the community borders of the people living there.
+From the map it can be seen that the districts are all of different sizes and therefore contain different population numbers.
+To account for that I located a <a href="http://sanfranciscopolice.org/sites/default/files/FileCenter/Documents/14683-SFPD_DSBAfinal_trnsmtl.pdf">2008 police district report</a> which, among other things, contained the population living in each district.
+I used these numbers to normalize the crime rate to number of crimes per 10,000 people.
+Of course the 2008 information is out of date but as long as the city's demographics have not changed significantly they can still be used to provide useful comparisons.
+I then broke the data down further into specific crimes, there are 34 crimes in the data but the top 7 crimes account for 78&#37 of all crimes.
+As a quick comparison I will show the crime rate per district for Larceny/Theft (the top crime) as a gross number (without dividing by the population) and the relative number (number of crimes per 10,000 people).
+</p>
+
+<img src="/data/LTC.png" alt="gross theft" class="inline"/>
+<img src="/data/LT.png" alt="theft" class="inline"/>
+
+<p>
+From these bar charts it is obivious that the Southern district has the largest amount of theft, and in total number the Central and Northern districts are close behind.
+However, when the population is taken into account most of the districts have significantly less crime than the Southern district, with the exception of the Tenderloin.
+This will become a common theme as the Tenderloin and Southern districts have much lower populations and yet they are responsible for a proportionally larger amount of crime.
+Meanwhile, the Taraval, Ingleside, and Mission districts have much higher populations and a proportionally smaller amount of the crime.
+</p>
+
+<img src="/data/VT.png" alt="car theft" class="inline"/>
+
+<p>
+Vehicle Theft is the only one of the top 7 crimes where the Southern and Tenderloin districts do not dominate the statistics.
+Instead there is significant representation from Bayview and the Mission, although Southern still controls the largest proportion of crime.
+I have also included the other crime rate plots for the top 7 below.
+
+<UL>
+<LI><a href="/data/AT.png">Assaults</a></LI>
+<LI><a href="/data/DN.png">Drugs and Narcotics</a></LI>
+<LI><a href="/data/NC.png">Non-Criminal</a></LI>
+<LI><a href="/data/WA.png">Warrants</a></LI>
+<LI><a href="/data/OO.png">Other Offenses</a>(traffic offenses)</LI>
+</UL>
+
+</p>
+
+<h6><a id="analysis" class="anchor" href="#analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Criminal Analysis/h6>
+
+<p>
+These data require some further understanding before conclusions can be drawn.
+The Tenderloin district lies close to the heart of downtown San Francisco and does not have many residents, most of that area is business related.
+The Southern district, which is simply the area south of downtown and not the southern most part of the city, contains the baseball stadium and a lot of tourist and nightlife related facilities.
+It seems likely that criminals would be attracted to these areas since they are where tourists might visit, and tourists make easier targets for criminals.
+This is acknowledged in the 2008 report on San Francisco's police districts, which early on establishes that the city's northeastern region is the center of criminal activity.
+But what should be done about this?
+The downtown area has two police districts dedicated to it and its small population yet crime is still high.
+In the 2008 report the final conclusion urges consolidating the 10 districts into 5 with the downtown area split between the two smallest propsed districts.
+Assuming that all districts receive equivalent resources in manpower and equipment this change would increase the police presence in the downtown area without sacrificing other districts.
+However, as of this time the only changes to the police districts has been some minor exchange of territory between the existing districts and so the problem continues.
+</p>
